@@ -1,0 +1,42 @@
+<header class="header" header>
+  <div class="container infobar">
+    <span class="infobar__left">
+      Dowóz produktów gratis
+    </span>
+    <span class="infobar__right">
+      Zapraszamy:  pn-pt 7:00 - 15: 00, sobota 7:00 - 12:00
+    </span>
+  </div>
+  <div class="container">
+    <div class="row header__row">
+      @if(get_option_field("logo"))
+        <a class="header__brand col-auto" href="{{ home_url('/') }}">
+          <img src="{{  get_option_field("logo")['url'] }}" alt="{{  get_option_field("logo")['alt'] }}">
+        </a>
+      @else
+        <span>
+        </span>
+      @endif
+      <button class="header__hamburger hamburger" data-toggle-menu>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+      <nav class="header__nav col-auto" data-nav>
+         @if (has_nav_menu('primary_navigation'))
+          {!! wp_nav_menu(
+            [
+              'theme_location' => 'primary_navigation',
+              'menu_class' => 'header__menu',
+            ]) !!}
+        @endif
+      </nav>
+      <div class="header__button">
+        <a href="tel:{{ str_replace(' ','', get_option_field('phone')) }}" class="button">
+          <i class="fas fa-phone button__icon"></i>
+          {{ get_option_field("phone") }}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
